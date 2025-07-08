@@ -41,9 +41,18 @@
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib cpp/out",
     "prepare": "bob build",
-    "release": "release-it"
+    "release": "release-it",
+    "build": "yarn clean && cd cpp && ./scripts/setup.sh all && ./scripts/build.sh all && cd .. && yarn prepare",
+    "build:android": "yarn clean && cd cpp && ./scripts/setup.sh all && ./scripts/build.sh android && cd .. && yarn prepare",
+    "build:ios": "yarn clean && cd cpp && ./scripts/setup.sh all && ./scripts/build.sh ios && cd .. && yarn prepare",
+    "dev": "cd cpp && ./scripts/build.sh all && cd .. && yarn prepare",
+    "dev:android": "cd cpp && ./scripts/build.sh android && cd .. && yarn prepare",
+    "dev:ios": "cd cpp && ./scripts/build.sh ios && cd .. && yarn prepare",
+    "link": "cd cpp && ./scripts/build.sh link",
+    "unlink": "cd cpp && ./scripts/build.sh unlink",
+    "check:links": "cd cpp && ./scripts/build.sh check"
   },
   "keywords": [
     "react-native",
@@ -79,7 +88,7 @@
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-native": "0.74.7",
-    "react-native-builder-bob": "^0.40.12",
+    "react-native-builder-bob": "0.20.0",
     "release-it": "^17.10.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"

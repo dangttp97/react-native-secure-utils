@@ -1,0 +1,13 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "out/armeabi-v7a/build/Release/generators/CMakePresets.json",
+        "out/arm64-v8a/build/Release/generators/CMakePresets.json",
+        "out/x86/build/Release/generators/CMakePresets.json",
+        "out/x86_64/build/Release/generators/CMakePresets.json",
+        "out/ios/build/Release/generators/CMakePresets.json"
+    ]
+}

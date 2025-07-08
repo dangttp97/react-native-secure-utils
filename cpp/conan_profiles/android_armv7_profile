@@ -1,0 +1,17 @@
+[settings]
+arch=armv7
+build_type=Release
+compiler=clang
+compiler.cppstd=gnu17
+compiler.libcxx=c++_shared
+compiler.version=16
+os=Android
+os.api_level=21
+
+[buildenv]
+ANDROID_NDK=/Users/phuongdangtranthanh/Library/Android/sdk/ndk/28.0.12674087
+
+[tool_requires]
+
+[conf]
+tools.android:ndk_path=/Users/phuongdangtranthanh/Library/Android/sdk/ndk/28.0.12674087 

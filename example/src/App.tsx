@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-security-core';
+import SecurityCore from '../../src/index';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+  const [result, setResult] = useState<boolean | undefined>();
 
   useEffect(() => {
-    multiply(3, 7).then(setResult);
+    const checkIntegrity = async () => {
+      const deviceIntegrity = await SecurityCore.detectFridaFiles();
+      console.log(deviceIntegrity);
+      setResult(!deviceIntegrity);
+    };
+    checkIntegrity();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Integrity: {result ? 'OK' : 'NG'}</Text>
     </View>
   );
 }

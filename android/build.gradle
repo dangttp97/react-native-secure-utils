@@ -50,12 +50,6 @@ def supportsNamespace() {
 android {
   if (supportsNamespace()) {
     namespace "com.securitycore"
-
-    sourceSets {
-      main {
-        manifest.srcFile "src/main/AndroidManifestNew.xml"
-      }
-    }
   }
 
   compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
@@ -63,7 +57,14 @@ android {
   defaultConfig {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
-
+    externalNativeBuild {
+      cmake {
+        cppFlags ""
+      }
+      ndk {
+        abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+      }
+    }
   }
 
   buildTypes {
@@ -79,6 +80,21 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
+  }
+  kotlinOptions {
+    allWarningsAsErrors = true
+  }
+  sourceSets {
+    main {
+      manifest.srcFile "src/main/AndroidManifestNew.xml"
+      jniLibs.srcDirs = ['src/main/jniLibs']
+    }
+  }
+  externalNativeBuild {
+    cmake {
+      path file('src/main/cpp/CMakeLists.txt')
+      version '3.22.1'
+    }
   }
 }
 

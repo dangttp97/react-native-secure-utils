@@ -22,7 +22,7 @@
     "@react-native/metro-config": "0.74.89",
     "@react-native/typescript-config": "0.74.89",
     "@rnx-kit/metro-config": "^2.1.0",
-    "react-native-builder-bob": "^0.40.12",
+    "react-native-builder-bob": "0.20.0",
     "react-native-test-app": "^4.4.0"
   },
   "engines": {
